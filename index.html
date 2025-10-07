@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coba1</title>
+  </head>
+  <div id="cursor-effect"></div>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+
+  <script>
+document.addEventListener("mousemove", (e) => {
+  const effect = document.getElementById("cursor-effect");
+  if (!effect) return;
+
+  // Efek glow mengikuti kursor
+  effect.style.left = e.clientX + "px";
+  effect.style.top = e.clientY + "px";
+
+  // Trail lembut
+  const trail = document.createElement("div");
+  trail.classList.add("cursor-trail");
+  trail.style.left = e.clientX + "px";
+  trail.style.top = e.clientY + "px";
+  document.body.appendChild(trail);
+  setTimeout(() => trail.remove(), 500);
+
+  // Partikel kecil biru
+  const particle = document.createElement("div");
+  particle.classList.add("particle");
+  particle.style.left = e.clientX + "px";
+  particle.style.top = e.clientY + "px";
+  particle.style.setProperty("--tx", (Math.random() - 0.5) * 100);
+  particle.style.setProperty("--ty", (Math.random() - 0.5) * 100);
+  document.body.appendChild(particle);
+  setTimeout(() => particle.remove(), 1000);
+});
+
+
+
+  </script>
+</html>
