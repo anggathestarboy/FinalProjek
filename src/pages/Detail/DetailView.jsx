@@ -390,7 +390,7 @@ const CastSection = ({ cast, isDark, textContent }) => (
             : "text-gray-600 hover:text-black"
         }`}
       >
-        {textContent.viewAll}
+
       </button>
     </div>
 
@@ -522,7 +522,7 @@ const SimilarMoviesSection = ({
               : "text-gray-600 hover:text-black"
           }`}
         >
-          {textContent.viewAll}
+         
         </button>
       </div>
 

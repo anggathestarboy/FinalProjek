@@ -314,7 +314,7 @@ const CastSection = ({ cast, isDark, textContent }) => (
       <button className={`text-sm hover:underline ${
         isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"
       }`}>
-        {textContent.viewAll} →
+       
       </button>
     </div>
     
@@ -525,7 +525,7 @@ const SimilarSeriesSection = ({
         <button className={`text-sm hover:underline ${
           isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"
         }`}>
-          {textContent.viewAll} →
+     
         </button>
       </div>
 
