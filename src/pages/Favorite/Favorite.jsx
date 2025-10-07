@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { favoritesService } from "../service/FavoritesService";
+import { FavoritesService } from "../service/FavoritesService";
 import FavoritesView from "./FavoriteView";
 
 
@@ -43,7 +43,7 @@ const Favorite = () => {
   const fetchFavorites = async () => {
     try {
       setLoading(true);
-      const data = await favoritesService.getFavorites();
+      const data = await FavoritesService.getFavorites();
       setFavorites(data.results || []);
     } catch (err) {
       console.error("Gagal mengambil favorit:", err);
@@ -57,7 +57,7 @@ const Favorite = () => {
   const handleRemoveFavorite = async (movieId, e) => {
     e.stopPropagation(); // Prevent triggering the card click
     try {
-      await favoritesService.removeFromFavorites(movieId);
+      await FavoritesService.removeFromFavorites(movieId);
       // Refresh favorites list
       await fetchFavorites();
     } catch (error) {

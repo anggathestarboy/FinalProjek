@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DetailView from "./DetailView";
-import { favoritesService } from "../service/FavoritesService";
+import { FavoritesService } from "../service/FavoritesService";
 
 // Service untuk mengelola rating di localStorage
 const ratingService = {
