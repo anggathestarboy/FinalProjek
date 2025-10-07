@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DetailSeriesView from "./DetailSeriesView";
-import { FavoritesService } from "../service/FavoritesService";
+import { FavoritesService } from "../Service/FavoritesService";
 
 const DetailSeries = () => {
   // Redux state

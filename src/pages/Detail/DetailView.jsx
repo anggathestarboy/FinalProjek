@@ -11,7 +11,7 @@ import {
   Heart,
   TrendingUp,
 } from "lucide-react";
-import { FavoritesService } from "../service/FavoritesService";
+import { FavoritesService } from "../Service/FavoritesService";
 
 // Reusable Components
 const LoadingState = ({ isDark, textContent }) => (

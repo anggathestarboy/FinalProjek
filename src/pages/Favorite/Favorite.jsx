@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FavoritesService } from "../service/FavoritesService";
+import { FavoritesService } from "../Service/FavoritesService";
 import FavoritesView from "./FavoriteView";
 
 

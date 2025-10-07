@@ -11,6 +11,8 @@ const api = axios.create({
   },
 });
 
+
+
 export const FavoritesService = {
   // Add to favorites
   addToFavorites: async (movieId) => {
