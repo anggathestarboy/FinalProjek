@@ -53,3 +53,4 @@ list fitur yang dikerjakan
 - skeleton loading
 - filter konten
 - horizotal scroll
+.
