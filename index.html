@@ -12,7 +12,7 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 
-  <script>
+<script>
 document.addEventListener("mousemove", (e) => {
   const effect = document.getElementById("cursor-effect");
   if (!effect) return;
@@ -41,6 +41,28 @@ document.addEventListener("mousemove", (e) => {
 });
 
 
+// === Efek kembang api saat klik ===
+document.addEventListener("click", (e) => {
+  const count = 20; // jumlah partikel
+  for (let i = 0; i < count; i++) {
+    const firework = document.createElement("div");
+    firework.classList.add("firework-particle");
+    firework.style.left = e.clientX + "px";
+    firework.style.top = e.clientY + "px";
 
-  </script>
+    // arah acak
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 100 + Math.random() * 50;
+    firework.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    firework.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    // warna acak cerah
+    const colors = ["#00aaff", "#ffaa00", "#ff00ff", "#00ff88", "#ff4444"];
+    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(firework);
+    setTimeout(() => firework.remove(), 1000);
+  }
+});
+</script>
 </html>
