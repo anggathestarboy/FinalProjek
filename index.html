@@ -2,68 +2,162 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image" href="/aksata.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/aksata.png" />
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aksata Movie</title>
+
+    <!-- SEO Meta -->
+    <title>Aksata Movie – Nonton Film & Series Terupdate</title>
+    <meta name="description" content="Aksata Movie menyediakan streaming film dan series terbaru dengan tampilan cepat, ringan, dan nyaman. Cari film favoritmu dan tonton tanpa ribet.">
+
+    <!-- Keywords (optional untuk Google, tapi berguna untuk mesin pencari lain) -->
+    <meta name="keywords" content="Aksata Movie, nonton film, streaming film, movie, series, film terbaru, film online">
+
+    <!-- Author -->
+    <meta name="author" content="Aksata Production">
+
+    <!-- Google Verification -->
     <meta name="google-site-verification" content="nNKuI2XYFZPj2T72QHx-xbbgiKJE4cqFEnhX5D3LIEk" />
+
+    <!-- Open Graph (SEO untuk WhatsApp/FB/Telegram) -->
+    <meta property="og:title" content="Aksata Movie – Nonton Film & Series Terupdate" />
+    <meta property="og:description" content="Website streaming film dan series terbaru, cepat, ringan, dan nyaman." />
+    <meta property="og:image" content="/aksata.png" />
+    <meta property="og:url" content="https://aksata-movie.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aksata Movie" />
+    <meta name="twitter:description" content="Nonton film & series terbaru dengan tampilan cepat dan nyaman." />
+    <meta name="twitter:image" content="/aksata.png" />
+
+    <!-- Robot SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Styles for Cursor Effects -->
+    <style>
+      #cursor-effect {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: rgba(0, 150, 255, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        filter: blur(10px);
+      }
+
+      .cursor-trail {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: rgba(0, 150, 255, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        filter: blur(6px);
+      }
+
+      .particle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: #00aaff;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        animation: particle-move 1s linear forwards;
+      }
+
+      @keyframes particle-move {
+        to {
+          transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)));
+          opacity: 0;
+        }
+      }
+
+      .firework-particle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: firework 1s ease-out forwards;
+      }
+
+      @keyframes firework {
+        to {
+          transform: translate(var(--x), var(--y));
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
-  <div id="cursor-effect"></div>
+
   <body>
+    <!-- Cursor Glow -->
+    <div id="cursor-effect"></div>
+
+    <!-- React Root -->
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const effect = document.getElementById("cursor-effect");
+        if (!effect) return;
+
+        // Glow follows cursor
+        effect.style.left = e.clientX + "px";
+        effect.style.top = e.clientY + "px";
+
+        // Trail
+        const trail = document.createElement("div");
+        trail.classList.add("cursor-trail");
+        trail.style.left = e.clientX + "px";
+        trail.style.top = e.clientY + "px";
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 500);
+
+        // Particle
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.style.left = e.clientX + "px";
+        particle.style.top = e.clientY + "px";
+        particle.style.setProperty("--tx", (Math.random() - 0.5) * 100);
+        particle.style.setProperty("--ty", (Math.random() - 0.5) * 100);
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+      });
+
+      // Firework click
+      document.addEventListener("click", (e) => {
+        const count = 20;
+        for (let i = 0; i < count; i++) {
+          const firework = document.createElement("div");
+          firework.classList.add("firework-particle");
+          firework.style.left = e.clientX + "px";
+          firework.style.top = e.clientY + "px";
+
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = 100 + Math.random() * 50;
+
+          firework.style.setProperty("--x", Math.cos(angle) * distance + "px");
+          firework.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+          const colors = ["#00aaff", "#ffaa00", "#ff00ff", "#00ff88", "#ff4444"];
+          firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+          document.body.appendChild(firework);
+          setTimeout(() => firework.remove(), 1000);
+        }
+      });
+    </script>
   </body>
-
-<script>
-document.addEventListener("mousemove", (e) => {
-  const effect = document.getElementById("cursor-effect");
-  if (!effect) return;
-
-  // Efek glow mengikuti kursor
-  effect.style.left = e.clientX + "px";
-  effect.style.top = e.clientY + "px";
-
-  // Trail lembut
-  const trail = document.createElement("div");
-  trail.classList.add("cursor-trail");
-  trail.style.left = e.clientX + "px";
-  trail.style.top = e.clientY + "px";
-  document.body.appendChild(trail);
-  setTimeout(() => trail.remove(), 500);
-
-  // Partikel kecil biru
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-  particle.style.left = e.clientX + "px";
-  particle.style.top = e.clientY + "px";
-  particle.style.setProperty("--tx", (Math.random() - 0.5) * 100);
-  particle.style.setProperty("--ty", (Math.random() - 0.5) * 100);
-  document.body.appendChild(particle);
-  setTimeout(() => particle.remove(), 1000);
-});
-
-
-// === Efek kembang api saat klik ===
-document.addEventListener("click", (e) => {
-  const count = 20; // jumlah partikel
-  for (let i = 0; i < count; i++) {
-    const firework = document.createElement("div");
-    firework.classList.add("firework-particle");
-    firework.style.left = e.clientX + "px";
-    firework.style.top = e.clientY + "px";
-
-    // arah acak
-    const angle = Math.random() * 2 * Math.PI;
-    const distance = 100 + Math.random() * 50;
-    firework.style.setProperty("--x", Math.cos(angle) * distance + "px");
-    firework.style.setProperty("--y", Math.sin(angle) * distance + "px");
-
-    // warna acak cerah
-    const colors = ["#00aaff", "#ffaa00", "#ff00ff", "#00ff88", "#ff4444"];
-    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-    document.body.appendChild(firework);
-    setTimeout(() => firework.remove(), 1000);
-  }
-});
-</script>
 </html>
