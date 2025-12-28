@@ -3,13 +3,13 @@
     "short_name" : "Aksata Movie",
     "start_url": "/",
     "display": "standalone",
-    "theme_color" : "navy",
-    "background_color" : "navy",
+    "theme_color" : "#1b1c1c",
+    "background_color" : "#1b1c1c",
     "icons": [
         {
             "src": "/aksata.png",
             "sizes": "192x192",
-            "type" : "images/png"
+            "type" : "image/png"
         }
     ]
 }

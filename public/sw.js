@@ -4,7 +4,7 @@ let TAMPILAN_OFFLINE = "/offline.html"
 
 let ASSETS = [
     TAMPILAN_OFFLINE,
-    "/aksata1.png"
+    "/aksata.png"
 ]
 
 
